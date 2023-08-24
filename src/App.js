@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Event from "./pages/Events";
+import Login from "./pages/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "./firebaseConfig";
+import { login, logout } from "./redux/slices/UserSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./utils/PrivateRoute";
+
 
 function App() {
+  const user = useSelector((state) => state?.user?.user);
+  const dispatch = useDispatch();
+  console.log(user)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<PrivateRoute/>}>
+            <Route element={<Home />}  path="/" exact />
+            <Route element={<About />} path="/about"/>
+            <Route path="/event" element={<Event />} />
+          </Route>
+          <Route element={<Login />} path="/login"/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

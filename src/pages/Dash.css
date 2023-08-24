@@ -1,0 +1,36 @@
+.paddingall {
+  padding: 2px 2px 2px 2px;
+}
+
+.pricetitle {
+  font-weight: 600;
+}
+
+.pricesubtitle {
+  font-size: 14px;
+}
+
+.iconstyle {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.gradiant {
+  background: rgb(40, 34, 70);
+  background: linear-gradient(
+    158deg,
+    rgba(40, 34, 70, 1) 0%,
+    rgba(30, 47, 141, 1) 100%
+  );
+}
+
+/* light gradiant */
+.gradiantlight {
+    background: rgb(53, 138, 148);
+    background: linear-gradient(
+      158deg,
+      rgba(53, 138, 148, 1) 0%,
+      rgba(91, 180, 96, 1) 100%
+    );
+  }
+  
